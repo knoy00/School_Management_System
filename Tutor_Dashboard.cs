@@ -38,11 +38,15 @@ namespace School_Management_System
 
         private void Tutor_Dashboard_Load(object sender, EventArgs e)
         {
+            //---------Starting the date and time function
             clockTimer.Interval = 1000;
             clockTimer.Start();
+
+
             accountPanel.Hide();
             dashboardPanel.BringToFront();
             accountPanel.SendToBack();
+            accountPanel.Visible = false;
             updatePanel.Hide();
         }
 
@@ -137,25 +141,47 @@ namespace School_Management_System
                
                 accountPanel.Show();
                 accountPanel.BringToFront();
+                accountPanel.Visible = true;
                 accSettingBtn.Normalcolor = Color.CadetBlue;
                 classBtn.Normalcolor= Color.FromArgb(12, 21, 30);
                 examBtn.Normalcolor = Color.FromArgb(12, 21, 30);
                 announcementBtn.Normalcolor = Color.FromArgb(12, 21, 30);
                 messagesBtn.Normalcolor = Color.FromArgb(12, 21, 30);
+                dashBtn.Normalcolor = Color.FromArgb(12, 21, 30);
             }
         }
 
         private void updateAccountBtn_Click(object sender, EventArgs e)
         {
-            updatePanel.Hide();
+            
 
             string name = nameInput.Text;
             string gender = genderInput.Text;
             string email = emailInput.Text;
 
-            nameBox.Text = name;
-            genderBox.Text = gender;
-            emailBox.Text = email; 
+            
+
+            if (!string.IsNullOrEmpty(nameInput.Text) || !string.IsNullOrEmpty(genderInput.Text) || !string.IsNullOrEmpty(emailBox.Text))
+            {
+                updatePanel.Hide();
+                nameBox.Text = name;
+                genderBox.Text = gender;
+                emailBox.Text = email;
+                string msg = "Account Updated Successfully";
+                string title = "Information";
+                MessageBoxButtons button = MessageBoxButtons.OK;
+                MessageBoxIcon icon = MessageBoxIcon.Information;
+                DialogResult result = MessageBox.Show(msg, title, button, icon);
+
+            }
+            else
+            {
+                updatePanel.Hide();
+            }
+
+            nameInput.Text = "";
+            genderInput.Text = "";
+            emailInput.Text = "";
         }
 
         private void editInfoBtn_Click(object sender, EventArgs e)
