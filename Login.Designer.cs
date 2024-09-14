@@ -78,7 +78,6 @@
             this.loginErrorMsg.Name = "loginErrorMsg";
             this.loginErrorMsg.Size = new System.Drawing.Size(532, 33);
             this.loginErrorMsg.TabIndex = 8;
-            this.loginErrorMsg.Text = "hello";
             this.loginErrorMsg.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel3
